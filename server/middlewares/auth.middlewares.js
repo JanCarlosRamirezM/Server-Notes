@@ -1,5 +1,7 @@
 require("../config/config")
 const jwt = require('jsonwebtoken');
+const { status } = require('../helpers/statusCode.helpers');
+
 
 module.exports = function (req, res, next) {
     // Read the header token
@@ -7,7 +9,7 @@ module.exports = function (req, res, next) {
 
     // Check if there is no token
     if (!token) {
-        return res.status(401).json({ msg: 'No hay Token, permiso no válido' })
+        return res.status(status.unauthorized).json({ msg: 'No hay Token, permiso no válido' })
     }
 
     // validate the token
@@ -16,6 +18,6 @@ module.exports = function (req, res, next) {
         req.user = encryption.user;
         next();
     } catch (error) {
-        res.status(401).json({ msg: 'Token no válido' });
+        res.status(status.unauthorized).json({ msg: 'Token no válido' });
     }
 }

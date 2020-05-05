@@ -55,7 +55,7 @@ exports.authUser = async (req, res) => {
             res.status(status.created).json({
                 ok: true,
                 token,
-                msg: "Generación del Token correctamente"
+                msg: "Sesión iniciada correctamente"
             })
         })
 
