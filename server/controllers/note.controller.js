@@ -125,6 +125,7 @@ exports.getNotesByUser = async (req, res) => {
                 error
             })
         }
+        
         // validate if the note exists
         if (!notesDB) {
             return res.status(status.error).json({
