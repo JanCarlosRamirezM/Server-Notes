@@ -65,7 +65,9 @@ exports.UpdateNote = async (req, res) => {
         if (!noteDB) {
             return res.status(status.error).json({
                 ok: false,
-                msg: `Nota no encontrada`
+                error: {
+                    msg: `Nota no encontrada`
+                }
             })
         }
 
@@ -96,7 +98,9 @@ exports.deleteNote = async (req, res) => {
         if (!noteDB) {
             return res.status(status.error).json({
                 ok: false,
-                msg: `Nota no encontrada`
+                error: {
+                    msg: `Nota no encontrada`
+                }
             })
         }
         res.status(status.success).json({
@@ -125,13 +129,14 @@ exports.getNotesByUser = async (req, res) => {
         if (!notesDB) {
             return res.status(status.error).json({
                 ok: false,
-                msg: `Nota no encontrada`
+                error: {
+                    msg: `Nota no encontrada`
+                }
             })
         }
         res.status(status.success).json({
             ok: true,
             notes: notesDB,
-            msg: "Nota eliminada correctamente"
         })
     });
 

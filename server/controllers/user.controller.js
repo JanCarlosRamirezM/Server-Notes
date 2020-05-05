@@ -32,7 +32,9 @@ exports.addUser = async (req, res) => {
         if (user) {
             return res.status(status.error).json({
                 ok: false,
-                msg: `Ya existe un usuario con email: ${email}`
+                error: {
+                    msg: `Ya existe un usuario con email: ${email}`
+                }
             })
         }
 
@@ -41,7 +43,6 @@ exports.addUser = async (req, res) => {
             email,
             password
         });
-
 
         // encode password
         let salt = await bcryptjs.genSalt(10);

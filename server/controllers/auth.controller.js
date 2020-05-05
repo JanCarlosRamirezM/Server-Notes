@@ -31,13 +31,17 @@ exports.authUser = async (req, res) => {
         if (!user) {
             return res.status(status.error).json({
                 ok: false,
-                msg: `Usuario o contraseña incorrecto`
+                error: {
+                    msg: `Usuario o contraseña incorrecto`
+                }
             })
         }
         if (!bcryptjs.compareSync(password, user.password)) {
             return res.status(status.error).json({
                 ok: false,
-                msg: `Usuario o contraseña incorrecto`
+                error: {
+                    msg: `Usuario o contraseña incorrecto`
+                }
             })
         }
 
@@ -74,7 +78,7 @@ exports.authUser = async (req, res) => {
  */
 exports.getAuthenticatedUser = async (req, res) => {
     try {
-        let { _id } = req.user;              
+        let { _id } = req.user;
         let user = await User.findById(_id).select('-password');
         res.status(status.success).json({
             ok: true,
