@@ -21,3 +21,10 @@ if (process.env.NODE_ENV === "dev") {
 }
 
 process.env.URL_DB = urlDB;
+
+// -------------------------------
+// JWT  - SIGNATURE AND EXPIRE TOKEN
+// -------------------------------
+process.env.SIGNATURE_TOKEN = process.env.SIGNATURE_TOKEN || 'DEV_SIGNATURE_SECRET'
+process.env.EXPIRE_TOKEN = process.env.EXPIRE_TOKEN || 3600000
+// 3600000 = 1 hora

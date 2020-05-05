@@ -2,6 +2,7 @@ require("./config/config");
 const connectDB = require('./config/db');
 const express = require('express');
 const colors = require('colors');
+const bodyParser = require('body-parser');
 
 // -------------------------------
 // Create APP - Connection DB
@@ -10,12 +11,15 @@ const app = express();
 connectDB();
 
 // -------------------------------
+// Habiilitar BodyParser  
+// -------------------------------
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// -------------------------------
 // Routes
 // -------------------------------
-// app.get('/', (req, res) => {
-//     res.send('hola mundo')
-// })
-
+app.use("/", require("./routes/index.router"));
 
 // -------------------------------
 // Run APP
