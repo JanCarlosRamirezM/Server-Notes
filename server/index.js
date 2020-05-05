@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 // -------------------------------
 // Routes
 // -------------------------------
-app.use("/", require("./routes/index.router"));
+app.use("/", require("./routes/config.router"));
 
 // -------------------------------
 // Run APP

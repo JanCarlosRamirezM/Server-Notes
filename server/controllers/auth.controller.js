@@ -8,13 +8,13 @@ const { validationResult } = require('express-validator');
 const { status } = require('../helpers/statusCode.helpers');
 
 /**
-   * Add A User
+   * Auth User
    * 
-   * POST api/v1/user
+   * POST api/v1/auth
  */
-exports.addUser = async (req, res) => {
+exports.authUser = async (req, res) => {
     try {
-        let { name, email, password } = req.body;
+        let { email, password } = req.body;
         let user;
 
         // validate
@@ -28,27 +28,18 @@ exports.addUser = async (req, res) => {
 
         // validate if the email exists
         user = await User.findOne({ email });
-
-        if (user) {
+        if (!user) {
             return res.status(status.error).json({
                 ok: false,
-                msg: `Ya existe un usuario con email: ${email}`
+                msg: `Usuario o contraseña incorrecto`
             })
         }
-
-        user = new User({
-            name,
-            email,
-            password
-        });
-
-
-        // encode password
-        let salt = await bcryptjs.genSalt(10);
-        user.password = await bcryptjs.hash(password, salt)
-
-        //save user
-        await user.save();
+        if (!bcryptjs.compareSync(password, user.password)) {
+            return res.status(status.error).json({
+                ok: false,
+                msg: `Usuario o contraseña incorrecto`
+            })
+        }
 
         // Generer token 
         const payload = {
@@ -64,14 +55,35 @@ exports.addUser = async (req, res) => {
             res.status(status.created).json({
                 ok: true,
                 token,
-                msg: "Usuario creado correctamente"
+                msg: "Generación del Token correctamente"
             })
         })
 
     } catch (error) {
         return res.status(status.error).json({
             ok: false,
-            error 
+            error
+        })
+    }
+}
+
+/**
+   * Get authenticated user
+   * 
+   * POST api/v1/getAuthenticatedUser
+ */
+exports.getAuthenticatedUser = async (req, res) => {
+    try {
+        let { _id } = req.user;              
+        let user = await User.findById(_id).select('-password');
+        res.status(status.success).json({
+            ok: true,
+            user
+        })
+    } catch (error) {
+        return res.status(status.error).json({
+            ok: false,
+            error
         })
     }
 }
