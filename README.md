@@ -1,6 +1,6 @@
-## RESTful API for a Notes application.🔌🔒📑 
+## RESTful API for a Notes application. 🔌🔒📑 
 
-🏅In this notes💡 application, the user will be able to organize their personal information through notes files. This means that the user once registered in the application will be able to: add notes, edit them, delete them and see a list of them.
+🏅💡 In this notes application, the user will be able to organize their personal information through notes files. This means that the user once registered in the application will be able to: add notes, edit them, delete them and see a list of them.
 
  ## Previous installation on the pc 💻
  
