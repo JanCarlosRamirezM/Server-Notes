@@ -4,7 +4,7 @@
 
  ## Previous installation on the pc 💻
  
- - git 
+ - git 📑
  
  - Nodejs 🔥⚡🔌
  
