@@ -5,9 +5,7 @@
  ## Previous installation on the pc 💻
  
  - git 📑
- 
- - VsCode....⚡
- 
+  
  - Nodejs 🔥⚡🔌
  
  - MongoDB 📂📑💡
