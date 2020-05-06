@@ -6,6 +6,8 @@
  
  - git 📑
  
+ - VsCode....⚡
+ 
  - Nodejs 🔥⚡🔌
  
  - MongoDB 📂📑💡
