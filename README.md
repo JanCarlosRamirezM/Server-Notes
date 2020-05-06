@@ -4,6 +4,8 @@
 
  ## Previous installation on the pc 💻
  
+ - git 
+ 
  - Nodejs 🔥⚡🔌
  
  - MongoDB 📂📑💡
