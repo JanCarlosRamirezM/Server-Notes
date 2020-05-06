@@ -22,5 +22,6 @@
 
 ## Documentation 📖
 
-This RESTful API is already in production, if you are interested in consuming its services. See the following documentation: [📖📑🔌](https://documenter.getpostman.com/view/5698540/SzmcZdy6)
+This RESTful API is already in production, if you are interested in consuming its services. See the following documentation:
+[📖📑🔌](https://documenter.getpostman.com/view/5698540/SzmcZdy6)
 
